@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vorynth Watches</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Playfair Display', serif;
       background-color: #f8f8f2;
       color: #1a1a1a;
     }
@@ -75,57 +75,44 @@
       background-color: #007c6d;
     }
 
-    .floating-box {
-      position: relative;
-      max-width: 600px;
-      margin: 3rem auto;
-      background-color: white;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      border-radius: 10px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+    .catalog {
+      padding: 3rem 1rem;
     }
 
-    .floating-box img {
-      width: 100%;
-      max-height: 350px;
-      object-fit: cover;
-    }
-
-    .floating-description {
-      padding: 1.5rem;
-    }
-
-    .floating-description h2 {
-      color: #004c45;
-      font-size: 1.5rem;
-    }
-
-    .arrow-controls {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      padding: 0 1rem;
-    }
-
-    .arrow {
-      font-size: 2rem;
-      color: white;
-      background-color: rgba(0,0,0,0.5);
-      border: none;
-      cursor: pointer;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
+    .product {
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 2rem;
+      border-top: 1px solid #ccc;
+      padding: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .product:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .product img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .description-box {
+      max-width: 400px;
+    }
+
+    .description-box h2 {
+      color: #004c45;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .description-box p {
+      font-size: 1rem;
     }
 
     footer {
@@ -138,7 +125,6 @@
   </style>
 </head>
 <body>
-  <!-- Navbar -->
   <div class="navbar">
     <div class="nav-links">
       <a href="#home">Home</a>
@@ -147,77 +133,38 @@
     <div class="brand">Vorynth</div>
   </div>
 
-  <!-- Intro -->
   <section class="intro" id="home">
     <h1>Vorynth<sup>™</sup> Luxury Sports Watches</h1>
     <p>Where automotive passion meets timekeeping precision. Our watches are inspired by the dynamic design and engineering of high-performance cars.</p>
-    <a href="product.html" class="cta-button">Shop Now</a>
+    <a href="product.html"><button class="cta-button">Shop Now</button></a>
   </section>
 
-  <!-- Floating Box Section -->
-  <div class="floating-box" id="floatingBox">
-    <div class="arrow-controls">
-      <button class="arrow" onclick="prevProduct()">&#8592;</button>
-      <button class="arrow" onclick="nextProduct()">&#8594;</button>
+  <section class="catalog" id="catalog">
+    <div class="product">
+      <img src="images/watch1.jpg" alt="Watch 1">
+      <div class="description-box">
+        <h2>Red Brake Caliper Spinner</h2>
+        <p>Combining strength and detail, this model features a rotating dial mimicking a sports wheel, accented by a bold red brake caliper.</p>
+      </div>
     </div>
-    <img id="productImg" src="Watch1.jpg" alt="Watch Image">
-    <div class="floating-description">
-      <h2 id="productTitle">Red Brake Caliper Spinner</h2>
-      <p id="productDesc">Combining strength and detail, this model features a rotating dial mimicking a sports wheel, accented by a bold red brake caliper.</p>
+    <div class="product">
+      <img src="images/watch2.jpg" alt="Watch 2">
+      <div class="description-box">
+        <h2>Precision Rim Design</h2>
+        <p>Crafted with automotive precision, this timepiece merges performance and aesthetics with a sleek black and red contrast.</p>
+      </div>
     </div>
-  </div>
+    <div class="product">
+      <img src="images/watch3.jpg" alt="Watch 3">
+      <div class="description-box">
+        <h2>Neon Green Speed Edition</h2>
+        <p>Vibrant green highlights add a high-energy twist to this watch, perfect for those who love speed and style.</p>
+      </div>
+    </div>
+  </section>
 
-  <!-- Footer -->
   <footer>
     &copy; 2025 Vorynth. All rights reserved.
   </footer>
-
-  <script>
-    const products = [
-      {
-        title: "Red Brake Caliper Spinner",
-        desc: "Combining strength and detail, this model features a rotating dial mimicking a sports wheel, accented by a bold red brake caliper.",
-        img: "Watch1.jpg"
-      },
-      {
-        title: "Precision Rim Design",
-        desc: "Crafted with automotive precision, this timepiece merges performance and aesthetics with a sleek black and red contrast.",
-        img: "Watch2.jpg"
-      },
-      {
-        title: "Neon Green Speed Edition",
-        desc: "Vibrant green highlights add a high-energy twist to this watch, perfect for those who love speed and style.",
-        img: "images/watch3.jpg"
-      },
-      {
-        title: "Metallic Rotor Elegance",
-        desc: "Showcasing metallic accents and a futuristic design, this piece captures the essence of luxury motorsports.",
-        img: "images/watch4.jpg"
-      },
-      {
-        title: "Sportline Minimal Red",
-        desc: "A minimalist approach with sleek red details and a bold brake rotor centerpiece. Pure automotive inspiration.",
-        img: "images/watch5.jpg"
-      }
-    ];
-
-    let currentIndex = 0;
-
-    function updateProduct() {
-      document.getElementById("productTitle").textContent = products[currentIndex].title;
-      document.getElementById("productDesc").textContent = products[currentIndex].desc;
-      document.getElementById("productImg").src = products[currentIndex].img;
-    }
-
-    function nextProduct() {
-      currentIndex = (currentIndex + 1) % products.length;
-      updateProduct();
-    }
-
-    function prevProduct() {
-      currentIndex = (currentIndex - 1 + products.length) % products.length;
-      updateProduct();
-    }
-  </script>
 </body>
 </html>
