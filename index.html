@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vorynth Watches</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #f8f8f2;
+      background-color: #f9f9f9;
       color: #1a1a1a;
     }
 
@@ -40,30 +40,68 @@
     .brand {
       font-size: 1.5rem;
       font-weight: bold;
-      text-align: right;
     }
 
     .intro {
       text-align: center;
-      padding: 3rem 1rem 2rem 1rem;
-      background-color: #f8f8f2;
+      padding: 3rem 1rem;
     }
 
     .intro h1 {
       font-size: 2.5rem;
-      margin-bottom: 0.5rem;
     }
 
     .intro p {
-      font-size: 1.1rem;
       max-width: 700px;
-      margin: 0 auto 1.5rem auto;
+      margin: 1rem auto;
+      font-size: 1.1rem;
     }
 
-    .cta-button {
+    .watch-list {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .watch-item {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .watch-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .watch-content {
+      padding: 1.5rem;
+    }
+
+    .watch-content h2 {
+      margin: 0 0 0.5rem 0;
+      color: #004c45;
+    }
+
+    .watch-content p {
+      margin: 0.5rem 0;
+    }
+
+    .review {
+      font-style: italic;
+      color: #555;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .buy-now {
       background-color: #004c45;
       color: white;
-      padding: 0.75rem 1.5rem;
+      padding: 0.6rem 1.2rem;
       border: none;
       border-radius: 6px;
       font-size: 1rem;
@@ -71,61 +109,8 @@
       transition: background-color 0.3s ease;
     }
 
-    .cta-button:hover {
+    .buy-now:hover {
       background-color: #007c6d;
-    }
-
-    .floating-box {
-      position: relative;
-      max-width: 600px;
-      margin: 3rem auto;
-      background-color: white;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      border-radius: 10px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .floating-box img {
-      width: 100%;
-      max-height: 350px;
-      object-fit: cover;
-    }
-
-    .floating-description {
-      padding: 1.5rem;
-    }
-
-    .floating-description h2 {
-      color: #004c45;
-      font-size: 1.5rem;
-    }
-
-    .arrow-controls {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      padding: 0 1rem;
-    }
-
-    .arrow {
-      font-size: 2rem;
-      color: white;
-      background-color: rgba(0,0,0,0.5);
-      border: none;
-      cursor: pointer;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     footer {
@@ -133,7 +118,7 @@
       color: white;
       text-align: center;
       padding: 1rem;
-      margin-top: 2rem;
+      margin-top: 3rem;
     }
   </style>
 </head>
@@ -150,22 +135,13 @@
   <!-- Intro -->
   <section class="intro" id="home">
     <h1>Vorynth<sup>™</sup> Luxury Sports Watches</h1>
-    <p>Where automotive passion meets timekeeping precision. Our watches are inspired by the dynamic design and engineering of high-performance cars.</p>
-    <button class="cta-button">Shop Now</button>
+    <p>Where automotive passion meets timekeeping precision. Inspired by the engineering excellence of high-performance machines.</p>
   </section>
 
-  <!-- Floating Box Section -->
-  <div class="floating-box" id="floatingBox">
-    <div class="arrow-controls">
-      <button class="arrow" onclick="prevProduct()">&#8592;</button>
-      <button class="arrow" onclick="nextProduct()">&#8594;</button>
-    </div>
-    <img id="productImg" src="Watch1.jpg" alt="Watch Image">
-    <div class="floating-description">
-      <h2 id="productTitle">Red Brake Caliper Spinner</h2>
-      <p id="productDesc">Combining strength and detail, this model features a rotating dial mimicking a sports wheel, accented by a bold red brake caliper.</p>
-    </div>
-  </div>
+  <!-- Watch List Section -->
+  <section class="watch-list" id="catalog">
+    <!-- Watches will be rendered here -->
+  </section>
 
   <!-- Footer -->
   <footer>
@@ -173,51 +149,57 @@
   </footer>
 
   <script>
-    const products = [
+    const watches = [
       {
         title: "Red Brake Caliper Spinner",
         desc: "Combining strength and detail, this model features a rotating dial mimicking a sports wheel, accented by a bold red brake caliper.",
-        img: "Watch1.jpg"
+        img: "Watch1.jpg",
+        review: '"Absolutely love the spinning mechanism! It turns heads everywhere I go." – Alex R.'
       },
       {
         title: "Precision Rim Design",
         desc: "Crafted with automotive precision, this timepiece merges performance and aesthetics with a sleek black and red contrast.",
-        img: "Watch2.jpg"
+        img: "Watch2.jpg",
+        review: '"Elegant yet sporty. The craftsmanship is unmatched." – Maria V.'
       },
       {
         title: "Neon Green Speed Edition",
         desc: "Vibrant green highlights add a high-energy twist to this watch, perfect for those who love speed and style.",
-        img: "Watch3.jpg"
+        img: "Watch3.jpg",
+        review: '"The color is a statement. Definitely a favorite in my collection." – Jake L.'
       },
       {
         title: "Metallic Rotor Elegance",
         desc: "Showcasing metallic accents and a futuristic design, this piece captures the essence of luxury motorsports.",
-        img: "Watch4.webp"
+        img: "Watch4.jpg",
+        review: '"Looks like it belongs on the dashboard of a supercar." – Natalie W.'
       },
       {
         title: "Sportline Minimal Red",
         desc: "A minimalist approach with sleek red details and a bold brake rotor centerpiece. Pure automotive inspiration.",
-        img: "Watch5.jpg"
+        img: "Watch5.jpg",
+        review: '"Sleek, clean, and powerful. Understated brilliance." – Ethan M.'
       }
     ];
 
-    let currentIndex = 0;
+    const container = document.querySelector(".watch-list");
 
-    function updateProduct() {
-      document.getElementById("productTitle").textContent = products[currentIndex].title;
-      document.getElementById("productDesc").textContent = products[currentIndex].desc;
-      document.getElementById("productImg").src = products[currentIndex].img;
-    }
+    watches.forEach(watch => {
+      const item = document.createElement("div");
+      item.className = "watch-item";
 
-    function nextProduct() {
-      currentIndex = (currentIndex + 1) % products.length;
-      updateProduct();
-    }
+      item.innerHTML = `
+        <img src="${watch.img}" class="watch-image" alt="${watch.title}">
+        <div class="watch-content">
+          <h2>${watch.title}</h2>
+          <p>${watch.desc}</p>
+          <p class="review">${watch.review}</p>
+          <button class="buy-now">Buy Now</button>
+        </div>
+      `;
 
-    function prevProduct() {
-      currentIndex = (currentIndex - 1 + products.length) % products.length;
-      updateProduct();
-    }
+      container.appendChild(item);
+    });
   </script>
 </body>
 </html>
