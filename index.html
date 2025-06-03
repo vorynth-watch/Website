@@ -101,6 +101,11 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       cursor: zoom-in;
+      transition: transform 0.2s ease;
+    }
+
+    .product img:hover {
+      transform: scale(1.03);
     }
 
     .description-box {
@@ -123,6 +128,25 @@
       text-align: center;
       padding: 1rem;
       margin-top: 2rem;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      cursor: zoom-out;
     }
 
     @media (max-width: 768px) {
@@ -162,49 +186,35 @@
   <!-- Catalog -->
   <section class="catalog" id="catalog">
     <div class="product">
-      <a href="61Df2w5RyzL._AC_UY1000_.jpg" target="_blank">
-        <img src="61Df2w5RyzL._AC_UY1000_.jpg" alt="Red Brake Caliper Spinner">
-      </a>
+      <img src="61Df2w5RyzL._AC_UY1000_.jpg" alt="Red Brake Caliper Spinner" onclick="openModal(this.src)">
       <div class="description-box">
         <h2>Red Brake Caliper Spinner</h2>
         <p>Combining strength and detail, this model features a rotating dial mimicking a sports wheel, accented by a bold red brake caliper.</p>
       </div>
     </div>
-
     <div class="product">
-      <a href="61hFCUrmBzL._AC_UY1000_DpWeblab_.jpg" target="_blank">
-        <img src="61hFCUrmBzL._AC_UY1000_DpWeblab_.jpg" alt="Precision Rim Design">
-      </a>
+      <img src="61hFCUrmBzL._AC_UY1000_DpWeblab_.jpg" alt="Precision Rim Design" onclick="openModal(this.src)">
       <div class="description-box">
         <h2>Precision Rim Design</h2>
         <p>Crafted with automotive precision, this timepiece merges performance and aesthetics with a sleek black and red contrast.</p>
       </div>
     </div>
-
     <div class="product">
-      <a href="9937-6.webp" target="_blank">
-        <img src="9937-6.webp" alt="Neon Green Speed Edition">
-      </a>
+      <img src="9937-6.webp" alt="Neon Green Speed Edition" onclick="openModal(this.src)">
       <div class="description-box">
         <h2>Neon Green Speed Edition</h2>
         <p>Vibrant green highlights add a high-energy twist to this watch, perfect for those who love speed and style.</p>
       </div>
     </div>
-
     <div class="product">
-      <a href="ferrari-spinning-wheel-watch.jpg" target="_blank">
-        <img src="ferrari-spinning-wheel-watch.jpg" alt="Metallic Rotor Elegance">
-      </a>
+      <img src="ferrari-spinning-wheel-watch.jpg" alt="Metallic Rotor Elegance" onclick="openModal(this.src)">
       <div class="description-box">
         <h2>Metallic Rotor Elegance</h2>
         <p>Showcasing metallic accents and a futuristic design, this piece captures the essence of luxury motorsports.</p>
       </div>
     </div>
-
     <div class="product">
-      <a href="ferrari-spinning-wheel-watch-500x500.webp" target="_blank">
-        <img src="ferrari-spinning-wheel-watch-500x500.webp" alt="Sportline Minimal Red">
-      </a>
+      <img src="ferrari-spinning-wheel-watch-500x500.webp" alt="Sportline Minimal Red" onclick="openModal(this.src)">
       <div class="description-box">
         <h2>Sportline Minimal Red</h2>
         <p>A minimalist approach with sleek red details and a bold brake rotor centerpiece. Pure automotive inspiration.</p>
@@ -212,9 +222,27 @@
     </div>
   </section>
 
+  <!-- Modal Viewer -->
+  <div class="modal" id="imageModal" onclick="closeModal()">
+    <img id="modalImg" src="" alt="Zoomed Image">
+  </div>
+
   <!-- Footer -->
   <footer>
     &copy; 2025 Vorynth. All rights reserved.
   </footer>
+
+  <script>
+    function openModal(src) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
+      modal.style.display = 'flex';
+      modalImg.src = src;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
